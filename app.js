@@ -1,13 +1,14 @@
-var express = require("express");
+const express = require('express');
 
-var app = express();
+const app = express();
 
-var port = process.env.PORT || 4000;
+const port = process.env.PORT || 4000;
 
-app.get("/", (req, res) => {
-  res.send("Hello world.");
+app.get('/', (req, res) => {
+  res.send('Hello world.');
 });
 
 app.listen(port, () => {
-  console.log("Running on port " + port);
+  /* eslint-disable-next-line no-console */
+  console.log(`Running on port ${port}`);
 });
