@@ -1,9 +1,11 @@
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 const goalRouter = express.Router();
 const port = process.env.PORT || 4000;
 
+app.use(cors());
 goalRouter.route("/goals").get((req, res) => {
   //   const response = { hello: "This is a get response" };
   const response = [
@@ -20,7 +22,6 @@ goalRouter.route("/goals").get((req, res) => {
   ];
   res.json(response);
 });
-
 app.use("/api", goalRouter);
 app.get("/", (req, res) => {
   res.send("Hello world!");
