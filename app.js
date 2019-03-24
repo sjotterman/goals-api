@@ -11,7 +11,11 @@ const Goal = require("./models/goalModel");
 app.use(cors());
 goalRouter.route("/goals").get((req, res) => {
   //   const response = { hello: "This is a get response" };
-  Goal.find((err, goals) => {
+  const query = {};
+  if (req.query.type) {
+    query.type = req.query.type;
+  }
+  Goal.find(query, (err, goals) => {
     if (err) {
       return res.send(err);
     }
