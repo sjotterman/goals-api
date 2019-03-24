@@ -3,7 +3,9 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const app = express();
-const db = mongoose.connect("mongodb://localhost/goalsAPI-dev");
+const dbConnString =
+  process.env.DB_CONN_STRING || "mongodb://localhost/goalsAPI-dev";
+const db = mongoose.connect(dbConnString);
 const goalRouter = express.Router();
 const port = process.env.PORT || 4000;
 const Goal = require("./models/goalModel");
