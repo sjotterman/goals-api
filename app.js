@@ -33,8 +33,7 @@ goalRouter.route("/goals/:goalId").get((req, res) => {
 });
 app.use("/api", goalRouter);
 app.get("/", (req, res) => {
-  //   res.send("Hello world!");
-  res.json(process.env);
+  res.send("Hello world!");
 });
 
 app.listen(port, () => {
