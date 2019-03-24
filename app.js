@@ -10,7 +10,6 @@ const Goal = require("./models/goalModel");
 
 app.use(cors());
 goalRouter.route("/goals").get((req, res) => {
-  //   const response = { hello: "This is a get response" };
   const query = {};
   if (req.query.type) {
     query.type = req.query.type;
@@ -20,6 +19,14 @@ goalRouter.route("/goals").get((req, res) => {
       return res.send(err);
     }
     return res.json(goals);
+  });
+});
+goalRouter.route("/goals/:goalId").get((req, res) => {
+  Goal.findById(req.params.goalId, (err, goal) => {
+    if (err) {
+      return res.send(err);
+    }
+    return res.json(goal);
   });
 });
 app.use("/api", goalRouter);
