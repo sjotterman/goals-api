@@ -67,6 +67,14 @@ function routes(Goal) {
         }
         return res.json(goal);
       });
+    })
+    .delete((req, res) => {
+      req.goal.remove(err => {
+        if (err) {
+          return res.send(err);
+        }
+        res.sendStatus(204);
+      });
     });
 
   return goalRouter;
